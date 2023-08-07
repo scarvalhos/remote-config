@@ -20,3 +20,8 @@ $ yarn dev
 # production mode
 $ yarn start
 ```
+
+## Documentation
+
+Insomnia: Check the doc/insomnia file.
+Swagger: Check the /documentation route.
