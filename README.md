@@ -1,4 +1,4 @@
-## remote-config
+## Remote Config API
 REST API that implements feature toggle and access tokens creation.
 
 ## Installation
