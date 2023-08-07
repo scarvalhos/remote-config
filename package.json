@@ -9,9 +9,10 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:generate": "prisma generate",
-    "db:updb": "prisma db push"
+    "db:updb": "prisma db push",
+    "swagger-autogen": "node src/libs/swagger.js"
   },
-  "author": "",
+  "author": "Samara Carvalho",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.13",
@@ -28,6 +29,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-import-helpers": "^1.2.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "@types/swagger-ui-express": "^4.1.3",
     "prisma": "^5.1.1",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
@@ -40,6 +42,8 @@
     "crypto-js": "^4.1.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.1"
+    "jsonwebtoken": "^9.0.1",
+    "swagger-autogen": "^2.23.4",
+    "swagger-ui-express": "^5.0.0"
   }
 }
