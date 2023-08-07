@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Collaborator {
+  id              String @id @default(uuid())
+  name            String
+  email           String @unique
+  avatar          String
+  superSecretPass String
+
+  @@map("collaborators")
+}
+
+enum RemoteConfigType {
+  string
+  boolean
+  number
+  json
+}
+
+model RemoteConfig {
+  id     String           @id @default(uuid())
+  key    String           @unique
+  type   RemoteConfigType
+  value  String
+  active Boolean
+
+  @@map("remote_configs")
+}
+
+model AccessToken {
+  id    String @id @default(uuid())
+  token String @unique
+
+  @@map("access-tokens")
+}
