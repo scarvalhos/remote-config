@@ -1,7 +1,7 @@
 {
-  "name": "server-sdoc",
+  "name": "remote-config",
   "version": "0.0.1",
-  "description": "Serviço de configurações da squad Docência/Tutoria",
+  "description": "REST API that implements feature toggle and access tokens creation.",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --exit-child -r tsconfig-paths/register src/index.ts",
