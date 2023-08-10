@@ -1,0 +1,22 @@
+version: '3'
+services:
+  # server-remote-config:
+  #   container_name: remote-config
+  #   build: ./
+  #   ports:
+  #     - '3333:3333'
+  #   command: yarn dev
+  postgres:
+    container_name: db-remote-config
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: remote-config
+      POSTGRES_PASSWORD: 92d6ad7136cf8e35cc5c584b50f59d92
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-db:/data/postgres
+    ports:
+      - '5432:5432'
+volumes:
+  postgres-db:
+    driver: local

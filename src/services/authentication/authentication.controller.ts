@@ -8,26 +8,29 @@ import CryptoJS from 'crypto-js'
 import jwt from 'jsonwebtoken'
 
 const ERROR_MESSAGE = 'Usuário ou senha incorreta!'
+const SESSION_DARATION = '7d'
 
 export class AuthController {
   private generateAccessToken = (collaborator: Collaborator) =>
     jwt.sign({ id: collaborator.id, name: collaborator.id }, secret, {
-      expiresIn: '7d',
+      expiresIn: SESSION_DARATION,
     })
 
-  private decryptPass = (pass: string) =>
-    CryptoJS.AES.decrypt(pass, hash).toString(CryptoJS.enc.Utf8)
+  private decryptPassword = (password: string) =>
+    CryptoJS.AES.decrypt(password, hash).toString(CryptoJS.enc.Utf8)
 
   public login = async (request: Request, response: Response) => {
     const { superSecretPass, email } = request.body
 
     try {
-      const colaborator = await collaboratorRepository.findUniqueByEmail(email)
+      const colaborator = await collaboratorRepository.collaborator.findUnique({
+        where: { email },
+      })
 
       if (!colaborator)
         return sendBadRequest(request, response, { message: ERROR_MESSAGE })
 
-      const hashedSuperSecretPass = this.decryptPass(
+      const hashedSuperSecretPass = this.decryptPassword(
         colaborator?.superSecretPass
       )
 

@@ -4,16 +4,13 @@ import { secret } from '@config'
 
 import jwt from 'jsonwebtoken'
 
+const TOKEN_DURATION = '90d'
+
 export class AccessTokenRepository extends Prisma {
   private generateAccessToken = (collaborator: Collaborator) =>
-    jwt.sign(
-      {
-        id: collaborator.id,
-        name: collaborator.id,
-      },
-      secret,
-      { expiresIn: '90d' }
-    )
+    jwt.sign({ id: collaborator.id, name: collaborator.id }, secret, {
+      expiresIn: TOKEN_DURATION,
+    })
 
   public create = async (collaborator: Collaborator) => {
     const token = await this.accessToken.create({
